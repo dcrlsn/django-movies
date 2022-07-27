@@ -1,0 +1,36 @@
+query AllMovies {
+  allMovies {
+    id
+    title
+    year
+    director {
+      fullName
+    }
+  }
+}
+
+query Movie($id: Int, $showdirector: Boolean = false) {
+  firstMovie: movie(title: "Nope") {
+    id
+    title
+    year
+  }
+  secondMovie: movie(id: $id) {
+    ...movieData
+  }
+}
+
+fragment movieData on MovieType {
+  id
+  title
+  year
+  director @include(if: $showdirector) {
+    fullName
+  }
+}
+
+### Variables
+{
+  "id": 3,
+  "showdirector": true
+}

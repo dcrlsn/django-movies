@@ -1,0 +1,19 @@
+mutation updateMovie($id:ID!, $title:String, $year:Int){
+  updateMovie(id:$id, title:$title, year:$year){
+    movie{
+      id
+      title
+      year
+    }
+  }
+}
+
+
+
+##### Variables
+
+{
+  "id":4,
+  "title": "Dune",
+  "year": 2021
+}
